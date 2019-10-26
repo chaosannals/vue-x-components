@@ -5,7 +5,7 @@ import store from './store'
 import component from '@source/all';
 
 Vue.config.productionTip = false;
-Vue.use(component);
+Vue.use(component, require.context('@/views/widgets', false, /.*\.vue$/));
 
 new Vue({
   router,
