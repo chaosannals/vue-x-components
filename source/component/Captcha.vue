@@ -26,7 +26,7 @@ export default {
       return this.height + "px";
     },
     imageHeight() {
-      return this.hegiht - 7 + "px";
+      return this.height - 2 + "px";
     }
   },
   methods: {
