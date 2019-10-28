@@ -4,13 +4,12 @@ export default class SimpleImporter {
     use(Vue, requireComponent) {
         requireComponent.keys().forEach(fileName => {
             const componentConfig = requireComponent(fileName);
-            if (!componentConfig.default.name && !componentConfig.name) {
-                throw Error('Component has no name.');
+            if (componentConfig.default.name || componentConfig.name) {
+                Vue.component(
+                    componentConfig.default.name || componentConfig.name,
+                    componentConfig.default || componentConfig
+                );
             }
-            Vue.component(
-                componentConfig.default.name || componentConfig.name,
-                componentConfig.default || componentConfig
-            );
         });
     }
 }
