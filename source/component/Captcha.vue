@@ -1,12 +1,12 @@
 <template>
   <div class="x-captcha" @click="onClick" :style="{height: frameHeight}">
-    <img :src="source" :style="{height: imageHeight}" />
+    <img :src="source" :style="{height: imageHeight, borderRadius: radius + 'px'}" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'x-captcha',
+  name: "x-captcha",
   data() {
     return {
       timestamp: new Date().getTime()
@@ -16,6 +16,9 @@ export default {
     src: String,
     height: {
       default: 39
+    },
+    radius: {
+      default: 3
     }
   },
   computed: {
@@ -26,7 +29,8 @@ export default {
       return this.height + "px";
     },
     imageHeight() {
-      return this.height - 2 + "px";
+      let height = this.height - 2;
+      return height + "px";
     }
   },
   methods: {
