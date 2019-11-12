@@ -67,7 +67,6 @@ export default {
     this.resizeCanvas();
     this.maxHeight = canvas.height / 2;
     this.minHeight = canvas.height / 1.1;
-    window.console.log(this.maxHeight, this.minHeight);
     window.addEventListener("resize", this.resizeCanvas);
     this.paint();
   },
