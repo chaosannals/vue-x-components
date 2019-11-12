@@ -1,16 +1,8 @@
 <template>
-  <div class="x-sea-wave">
-    <canvas ref="canvas"></canvas>
-  </div>
+  <x-canvas class="x-sea-wave" @ready="onReady" @paint="onPaint" />
 </template>
 
 <script>
-const requestAnimationFrame =
-  window.requestAnimationFrame ||
-  window.webkitRequestAnimationFrame ||
-  window.mozRequestAnimationFrame ||
-  (callback => window.setTimeout(callback, 1000 / 60));
-
 export default {
   name: "x-sea-wave",
   data() {
@@ -27,20 +19,27 @@ export default {
     };
   },
   methods: {
-    resizeCanvas() {
-      let canvas = this.$refs.canvas;
-      canvas.width = canvas.parentNode.offsetWidth;
-      canvas.height = canvas.parentNode.offsetHeight;
+    /**
+     * 初始化回调。
+     * 
+     */
+    onReady(canvas) {
+      this.context = canvas.getContext("2d");
+      this.maxHeight = canvas.height / 2;
+      this.minHeight = canvas.height / 1.1;
     },
-    paint() {
-      let canvas = this.$refs.canvas;
-      if (!canvas) return;
+
+    /**
+     * 帧绘制回调。
+     * 
+     */
+    onPaint(canvas) {
       let context = this.context;
       context.clearRect(0, 0, canvas.width, canvas.height);
       this.step += 1;
       this.colors.forEach((item, index) => {
         context.fillStyle = item;
-        let angle = (this.step + index * 50) * Math.PI / 180;
+        let angle = ((this.step + index * 50) * Math.PI) / 180;
         let deltaHeightLeft = Math.sin(angle) * this.maxHeight;
         let deltaHeightRight = Math.cos(angle) * this.maxHeight;
         context.beginPath();
@@ -58,20 +57,7 @@ export default {
         context.closePath();
         context.fill();
       });
-      requestAnimationFrame(this.paint);
     }
-  },
-  mounted() {
-    let canvas = this.$refs.canvas;
-    this.context = canvas.getContext("2d");
-    this.resizeCanvas();
-    this.maxHeight = canvas.height / 2;
-    this.minHeight = canvas.height / 1.1;
-    window.addEventListener("resize", this.resizeCanvas);
-    this.paint();
-  },
-  beforeDestory() {
-    window.removeEventListener("resize", this.resizeCanvas);
   }
 };
 </script>
