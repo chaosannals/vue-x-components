@@ -29,7 +29,7 @@ export default class XRouter extends VueRouter {
     push(location, resolve, reject) {
         let result = super.push(location, resolve, reject);
         if (result) {
-            result.catch(e => {
+            return result.catch(e => {
                 if (e.name != 'NavigationDuplicated') {
                     Promise.reject(e);
                 }
