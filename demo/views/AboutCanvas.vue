@@ -1,19 +1,13 @@
 <template>
-  <div class="component-one">
+  <div class="about-canvas-page">
     <div class="sea-wave-frame">
       <x-sea-wave />
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "demo-one"
-};
-</script>
-
 <style lang="scss" scoped>
-.component-one {
+.about-canvas-page {
   .sea-wave-frame {
     width: 800px;
     height: 600px;

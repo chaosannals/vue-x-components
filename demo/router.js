@@ -1,16 +1,26 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import XRouter from '@source/router';
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
+const router = new XRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
     path: '/',
     name: 'about',
     component: () => import('@/views/About.vue')
+  }, {
+    path: '/canvas',
+    name: 'about-canvas',
+    component: () => import('@/views/AboutCanvas.vue')
   }]
 });
+
+router.addRoutes([{
+  path: '/widgets',
+  name: 'about-widgets',
+  component: () => import('@/views/AboutWidgets.vue')
+}]);
+
+Vue.use(XRouter);
 
 export default router;

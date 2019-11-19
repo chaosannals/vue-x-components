@@ -1,7 +1,9 @@
 import SimpleImporter from './importer/simple';
+import XRouter from './router';
 
 export {
-    SimpleImporter
+    SimpleImporter,
+    XRouter,
 }
 
 export default {
