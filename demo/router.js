@@ -9,6 +9,10 @@ const router = new XRouter({
     name: 'about',
     component: () => import('@/views/About.vue')
   }, {
+    path: '/bezier',
+    name: 'about-bezier',
+    component: () => import('@/views/AboutBezier.vue')
+  }, {
     path: '/canvas',
     name: 'about-canvas',
     component: () => import('@/views/AboutCanvas.vue')
