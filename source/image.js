@@ -46,3 +46,12 @@ export function dataURLToBlob(dataURL) {
         type: mime
     });
 }
+
+export function imageToBlob(image, type, quality) {
+    let canvas = imageToCanvas(image);
+    return canvasToBlob(canvas, type, quality);
+}
+
+export function loadBlob(url, type, quality) {
+    return loadImage(url).then(image => imageToBlob(image, type, quality));
+}
