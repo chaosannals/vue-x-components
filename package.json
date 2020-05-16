@@ -1,10 +1,14 @@
 {
   "name": "vue-x-components",
   "version": "0.2.10",
-  "main": "source/all.js",
+  "main": "lib/vue-x-components.common.js",
+  "files": [
+    "lib",
+    "source"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vue-x-components --dest lib source/all.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
