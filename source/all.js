@@ -1,3 +1,4 @@
+export * from './component/Bar';
 import SimpleImporter from './importer/simple';
 import XRouter from './router';
 

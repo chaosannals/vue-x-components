@@ -16,6 +16,10 @@ const router = new XRouter({
     path: '/canvas',
     name: 'about-canvas',
     component: () => import('@/views/AboutCanvas.vue')
+  }, {
+    path: '/book',
+    name: 'about-book',
+    component: () => import('@/views/AboutBook.vue')
   }]
 });
 
